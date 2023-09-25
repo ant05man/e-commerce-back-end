@@ -49,18 +49,21 @@ router.get('/:id', async (req, res) => {
 
 });
 
-router.post('/', (req, res) => {
   // create a new category
-  Category.create({
-    category_name: req.body.category_name
-  })
-  .then(categoryData => res.json(categoryData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
+  router.post('/', async (req, res) => {
+    try {
+      // Create a new category based on the request body
+      const newCategory = await Category.create({
+        category_name: req.body.category_name // Adjust the key to match your request body structure
+      });
+  
+      // Send a response with the newly created category and a 201 status code
+      res.status(201).json(newCategory);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(
