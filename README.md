@@ -1,6 +1,7 @@
 # e-commerce-back-end
 
 ## Description
+-  Creating a functional API for e-commerce website 
 -  Create database using Sequelize
 -  When we enter schema and seed commands
 -  Development database is created and is seeded with data
