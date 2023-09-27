@@ -3,7 +3,7 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
   // find all categories
   // be sure to include its associated Products
   Category.findAll(
@@ -21,49 +21,37 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
-
-router.get('/:id', async (req, res) => {
-  try {
-    const categoryData = await Category.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: {
-        model: Product,
-        attributes: ['category_id']
-      }
-    });
-
-    if (!categoryData) {
-      res.status(404).json({ message: "No category found with that ID" });
-      return;
+  Category.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: {
+      model: Product,
+      attributes: ['category_id']
     }
-
-    res.json(categoryData);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
-  }
-
+  })
+    .then(categoryData => res.json(categoryData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
+router.post('/', (req, res) => {
   // create a new category
-  router.post('/', async (req, res) => {
-    try {
-      // Create a new category based on the request body
-      const newCategory = await Category.create({
-        category_name: req.body.category_name // Adjust the key to match your request body structure
-      });
-  
-      // Send a response with the newly created category and a 201 status code
-      res.status(201).json(newCategory);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
+  Category.create({
+    category_name: req.body.category_name
+  })
+    .then(categoryData => res.json(categoryData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(
@@ -87,7 +75,6 @@ router.put('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
