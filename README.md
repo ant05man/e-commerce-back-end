@@ -16,7 +16,8 @@
 
 ## Usage
 ![e-commerce1](https://github.com/ant05man/e-commerce-back-end/assets/132954354/7f1f45ff-29e1-4e3d-b258-4897b6982bcb)
-![e-commerce4](https://github.com/ant05man/e-commerce-back-end/assets/132954354/eaf1fb1c-c9aa-4a4b-9d5f-e96b40ca22ba)
-![e-commerce3](https://github.com/ant05man/e-commerce-back-end/assets/132954354/5c908116-4e86-4749-b89e-070a99134119)
 ![e-commerce2](https://github.com/ant05man/e-commerce-back-end/assets/132954354/6f2245b5-4bc5-4c12-b606-86ddcb761a28)
+![Screenshot (35)](https://github.com/ant05man/e-commerce-back-end/assets/132954354/a9f997cc-aa4d-49c7-8eb0-b311703acaad)
+![Screenshot (36)](https://github.com/ant05man/e-commerce-back-end/assets/132954354/58ae4060-b66b-49df-9ec2-fe19b9f5a0c3)
+
 
